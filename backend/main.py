@@ -3,6 +3,7 @@ import random
 import indices
 import threading
 import time
+import asyncio
 import websockets
 
 class FarmArea:
@@ -12,7 +13,6 @@ class FarmArea:
     self.tknum = 0
 
     self.initarea()
-    print(self.area)
 
   def blank(self):
     for i in range(1000):
@@ -54,6 +54,9 @@ class FarmArea:
   def start_tick(self):
     self.tkthread = threading.Thread(target=self.tick)
     self.tkthread.start()
+  
+  def output_area(self):
+    return "\n".join(",".join([str(y) for y in x]) for x in self.area)
 
   def initarea(self):
     self.blank()
@@ -66,3 +69,12 @@ class FarmPlayers:
     self.player_users = {}
 
 x = FarmArea()
+
+async def cnxn(sock, path):
+  async for message in sock:
+    await sock.send(x.output_area())
+    
+servestart = websockets.serve(cnxn, [IP ADDRESS HERE], [PORT HERE])
+
+asyncio.get_event_loop().run_until_complete(servestart)
+asyncio.get_event_loop().run_forever()
