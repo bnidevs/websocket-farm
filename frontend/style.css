@@ -1,0 +1,16 @@
+#grid {
+  flex-direction: column;
+}
+
+.grid_row {
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+    height: 100px;
+}
+
+.grid_cell {
+    outline: 1px solid black;
+    width: 100px;
+    height: 100px;
+}
