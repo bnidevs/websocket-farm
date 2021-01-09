@@ -3,3 +3,6 @@ python:
   - "3.8"
 install:
   - pip3 install -r requirements.txt
+script:
+  - cd backend/
+  - python3 -m py_compile main.py indices.py
