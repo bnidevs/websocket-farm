@@ -1,19 +1,9 @@
-matrix:
-  include:
-    - language: python
-      python:
-        - "3.8"
-      before_install:
-        - cd backend/
-      install:
-        - pip3 install -r requirements.txt
-      script:
-        - python3 -m py_compile main.py indices.py
-        
-    - language: node_js
-      node_js:
-        - "1.7"
-      before_install:
-        - cd frontend/
-      script:
-        - npm test
+language: python
+python:
+  - "3.8"
+before_install:
+  - cd backend/
+install:
+  - pip3 install -r requirements.txt
+script:
+  - python3 -m py_compile main.py indices.py
