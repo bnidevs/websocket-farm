@@ -12,7 +12,7 @@ matrix:
         
     - language: node_js
       node_js:
-        - "3.8"
+        - "1.7"
       before_install:
         - cd frontend/
       script:
