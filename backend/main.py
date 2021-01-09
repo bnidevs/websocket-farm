@@ -74,7 +74,7 @@ async def cnxn(sock, path):
   async for message in sock:
     await sock.send(x.output_area())
     
-servestart = websockets.serve(cnxn, [IP ADDRESS HERE], [PORT HERE])
+servestart = websockets.serve(cnxn, "localhost", "16666") # change this to server ip if serving publically
 
 asyncio.get_event_loop().run_until_complete(servestart)
 asyncio.get_event_loop().run_forever()
